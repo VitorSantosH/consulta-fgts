@@ -1,0 +1,130 @@
+.Login {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.containerLogin {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.title, .console {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40vw;
+    min-width: 350px;
+    max-width: 480px;
+    box-sizing: border-box;
+}
+
+
+.console {
+    background: rgb(32, 32, 36);
+    border-radius: 8px;
+    padding: 4rem;
+}
+
+.console input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    font-weight: 500;
+    font-size: 16px;
+    background: rgb(18, 18, 20);
+    border-color: rgb(18, 18, 20);
+    color: rgb(255, 255, 255);
+    padding: 0px 1em 0px 1em;
+    border-radius: 5px;
+}
+
+.email, .password {
+    background: rgb(18, 18, 20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 0px 1em 0px 1em;
+    outline: 0px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    border: solid 1px transparent;
+}
+
+.password input:focus, .email input:focus, .password input:active, .email input:active {
+    outline: none;
+
+}
+
+.password:focus-within, .email:focus-within, .password:active, .email:active {
+    outline: none;
+    border-color: #007bff;
+    border: solid 1px rgb(130, 87, 230);
+    box-shadow: 0 0 5px rgb(130, 87, 230);
+}
+
+.btnPadrão {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    padding: 0px 1em 0px 1em;
+    border-radius: 5px;
+    background-color: rgb(99, 49, 218);
+    border: solid 1px transparent;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btnPadrão:hover {
+    background-color: rgb(100, 67, 180);
+    color: white;
+}
+
+.btnPadrão:active {
+    background-color: rgb(70, 47, 150);
+    color: white;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.registrar strong {
+
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#loading-login {
+    border: 6px solid #e5e5e5;
+    border-top-color: rgb(229, 229, 229);
+    border-radius: 50%;
+    border-top-color: rgb(99, 49, 218);
+    height: 1rem;
+    width: 1rem;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
+
+@media only screen and (max-width: 850px) {
+    .title, .console {
+        width: 90vw;
+        min-width: 350px;
+        max-width: 480px;
+        padding: 2rem;
+
+    }
+}
