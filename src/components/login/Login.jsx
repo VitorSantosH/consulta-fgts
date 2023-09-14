@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import connect from "../config/connect";
 import Swal from "sweetalert2";
@@ -12,7 +12,7 @@ const Login = () => {
         passwordValue: "",
         loading: false
     })
-
+    const navigate = useNavigate();
     async function login() {
 
         if (!state.passwordValue || !state.emailValue) {
@@ -64,37 +64,39 @@ const Login = () => {
 
                 <div className="containerLogin">
                     <div className="email">
-                        <i className="fa fa-envelope" aria-hidden="true"></i>
-                        <input
-                            type="email"
-                            name="email"
-                            id=""
-                            placeholder="E-mail"
-                            value={state.emailValue}
-                            onChange={e => {
-                                setState({
-                                    ...state,
-                                    emailValue: e.target.value
-                                })
-                            }}
-                        />
+                        <i className="fa fa-envelope" aria-hidden="true">
+                            <input
+                                type="email"
+                                name="email"
+                                id=""
+                                placeholder="E-mail"
+                                value={state.emailValue}
+                                onChange={e => {
+                                    setState({
+                                        ...state,
+                                        emailValue: e.target.value
+                                    })
+                                }}
+                            />
+                        </i>
                     </div>
 
                     <div className="password">
-                        <i className="fa fa-lock" aria-hidden="true"></i>
-                        <input
-                            type="password"
-                            name="password"
-                            id=""
-                            placeholder="Senha"
-                            value={state.passwordValue}
-                            onChange={e => {
-                                setState({
-                                    ...state,
-                                    passwordValue: e.target.value
-                                })
-                            }}
-                        />
+                        <i className="fa fa-lock" aria-hidden="true">
+                            <input
+                                type="password"
+                                name="password"
+                                id=""
+                                placeholder="Senha"
+                                value={state.passwordValue}
+                                onChange={e => {
+                                    setState({
+                                        ...state,
+                                        passwordValue: e.target.value
+                                    })
+                                }}
+                            />
+                        </i>
                     </div>
 
                     <div
@@ -122,7 +124,13 @@ const Login = () => {
 
                     <div className="registrar">
                         Não tem uma conta?
-                        <strong>
+                        <strong
+                            className="navigate"
+                            onClick={e => {
+
+                                return navigate("/registro")
+                            }}
+                        >
                             Registre-se
                         </strong>
                     </div>

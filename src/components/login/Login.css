@@ -4,6 +4,9 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    background-color: rgb(36, 36, 36);
+    color: #FFF;
+    height: 100vh;
 }
 
 .containerLogin {
@@ -40,15 +43,18 @@
     height: 50px;
     font-weight: 500;
     font-size: 16px;
-    background: rgb(18, 18, 20);
-    border-color: rgb(18, 18, 20);
-    color: rgb(255, 255, 255);
     padding: 0px 1em 0px 1em;
     border-radius: 5px;
+    color: rgb(18, 18, 20) !important;
+    border: solid 1px transparent;
+    background: rgb(237, 249, 255);
+    font-weight: 550;
+    line-height: 1.5rem;
 }
 
 .email, .password {
-    background: rgb(18, 18, 20);
+    color: rgb(18, 18, 20);
+    background: rgb(237, 249, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,6 +67,18 @@
     border: solid 1px transparent;
 }
 
+.console i {
+    transition: color 0.2s;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.console i:focus-within {
+    color: rgb(130, 87, 230);
+}
+
 .password input:focus, .email input:focus, .password input:active, .email input:active {
     outline: none;
 
@@ -69,8 +87,8 @@
 .password:focus-within, .email:focus-within, .password:active, .email:active {
     outline: none;
     border-color: #007bff;
-    border: solid 1px rgb(130, 87, 230);
-    box-shadow: 0 0 5px rgb(130, 87, 230);
+    border: solid 2px rgb(130, 87, 230);
+    box-shadow: 0 0 8px rgb(130, 87, 230);
 }
 
 .btnPadrão {
@@ -126,5 +144,11 @@
         max-width: 480px;
         padding: 2rem;
 
+    }
+
+    .Login {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }

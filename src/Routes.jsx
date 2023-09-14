@@ -11,7 +11,7 @@ import {
 
 import Fgts from "./components/fgts/Fgts";
 import Login from "./components/login/Login";
-
+import Registro from "./components/registroConta/Registro";
 
 const Rotas = () => {
 
@@ -19,12 +19,12 @@ const Rotas = () => {
 
         <Router>
             <Routes>
-
-                <Route exact path="/fgts" element={<Login />} />
-                <Route exact path="/fgts/conulta" element={<Fgts />} />
+                <Route exact path="/registro" element={<Registro />} />
+                <Route exact path="/fgts" element={<Fgts />} />
+                <Route exact path="/" element={<Login />} />
                 <Route
                     path="*"
-                    element={<Navigate to="/fgts" replace />}
+                    element={<Navigate to="/" replace />}
                 />
 
             </Routes>
