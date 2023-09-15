@@ -30,6 +30,35 @@ const connect = {
         return response
     },
 
+    generateNewAcc: async (props) => {
+
+
+        const response = await api.post('/user/solicitacao-nova-conta', {
+
+            email: props.email,
+            password: props.password,
+            name: props.name,
+            tel: props.tel,
+            msg: props.msg
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+
+    },
+
     getLogs: async (props) => {
 
         const response = await api.get('/logs', {
@@ -76,12 +105,12 @@ const connect = {
 
     getFgtsStatus: async (cpf, id) => {
 
-        const parans =  {
+        const parans = {
             cpf: cpf,
             id: id
         }
 
-        const response = await api.post('/fgts/saldo',parans,)
+        const response = await api.post('/fgts/saldo', parans,)
             .then(res => {
 
                 return res.data
@@ -95,22 +124,74 @@ const connect = {
 
         return response
 
-    }, 
+    },
 
     getFtgsTable: async (params) => {
 
-      const response = await  api.post('/fgts/getTable', {
+        const response = await api.post('/fgts/getTable', {
             params
-        } ) .then(res => {
+        }).then(res => {
             return res
-        }) .catch(err => {
-           return err
+        }).catch(err => {
+            return err
         })
 
 
 
-        return  response.data;
+        return response.data;
+
+    },
+
+    getNotify: async (props) => {
+
+        
+        
+      
+        const response = await api.post('/user/solicicoes', {
+
+            user: JSON.stringify(props)
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+    }, 
+
+    resolveNotify: async (props) => {
+
        
+        const response = await api.post('/user/solicitacoes/resolve', {
+            user: props.user,
+            newUser: props.newUser,
+            aceito: props.aceito
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                console.log(res)
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
     }
 
 

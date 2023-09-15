@@ -10,7 +10,9 @@
     background-color: #1b1b1be9;
     height: 4rem;
     overflow: hidden;
+    justify-content: space-between;
 }
+
 .menu span, .menu i {
     font-size: 1.25rem;
     line-height: 1.25%;
@@ -19,14 +21,14 @@
 .homeBtn {
     cursor: pointer;
     display: flex;
-    width: 10vw;
+    width: auto;
     height: 100%;
     align-items: center;
-    justify-content: space-around;
     box-sizing: border-box;
     border: solid 1px transparent;
     transition: 0.3s ease;
     min-width: 80px;
+    overflow: hidden;
 }
 
 .homeBtn:hover {
@@ -37,4 +39,24 @@
 .homeBtn:active {
    color: #1b1b1be9;
    background-color: #FFF;
+}
+
+.homeBtn  i, .homeBtn span {
+    display: flex;
+    margin: 0rem 1rem;
+}
+.menuArea2 {
+    display: flex;
+    height: 100%;
+}
+.menuArea2 div {
+    margin: 0rem 1rem;
+}
+
+@media only screen and (max-width: 850px) {
+
+    .homeBtn {
+        width: 25vw;
+    }
+
 }

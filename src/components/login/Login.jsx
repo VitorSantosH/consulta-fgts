@@ -13,6 +13,7 @@ const Login = () => {
         loading: false
     })
     const navigate = useNavigate();
+    
     async function login() {
 
         if (!state.passwordValue || !state.emailValue) {

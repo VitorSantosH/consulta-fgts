@@ -10,7 +10,7 @@ import Menu from "../menu/Menu";
 const Fgts = props => {
 
     const [state, setState] = useState({
-        cpfValue: 34894164817,
+        cpfValue: "",
         retornoFgts: undefined,
         retornoFgtsConst: undefined,
         fgtsError: false,
@@ -21,6 +21,7 @@ const Fgts = props => {
         saldoTotalParcelas: undefined
     });
 
+   
     /**
      * 
      * cpf	Saldo_Liberado

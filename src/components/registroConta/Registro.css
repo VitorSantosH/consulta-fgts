@@ -94,3 +94,20 @@
     border: solid 2px rgb(130, 87, 230);
     box-shadow: 0 0 8px rgb(130, 87, 230);
 }
+
+
+.redRegex {
+    outline: none !important;
+    border-color: #fc474a !important;
+    border: solid 2px rgb(246, 72, 60) !important;
+    box-shadow: 0 0 8px rgb(246, 72, 60) !important;
+    color: rgb(246, 72, 60) !important;
+} 
+
+.redRegex  i {
+    color: rgb(246, 72, 60) !important;
+}
+
+.registro #loading-login {
+    border-top-color: var(--cor-azul-windows) !important;
+}

@@ -1,0 +1,86 @@
+.notificacoes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(241, 242, 247, 0.9);
+}
+
+.notify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2rem;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 10px 0px 8px 0px rgba(0, 0, 0, 0.10);
+
+}
+
+.notify div {
+    font-weight: 500;
+    line-height: 200%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.notify div label {
+    display: flex;
+    justify-content: flex-start;
+    width: 8rem;
+}
+
+.notify textarea {
+    height: auto;
+}
+
+#btnsNotif  {
+    box-sizing: border-box;
+    margin: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btnNotif {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.btnNotif:hover {
+    background-color: #005EA6;
+    filter: brightness(2);
+}
+
+
+.btnNotif:active {
+    background-color: #004C8E;
+    filter: brightness(2);
+}
+
+.aceitar {
+    background-color: var(--cor-azul-windows);
+}
+.recusar {
+    background-color: rgba(216, 62, 62, 0.718);
+}
+
+.recusar:hover {
+    background-color:rgba(255, 52, 52, 0.936);;
+    filter: brightness(2);
+}
+
+
+.recusar:active {
+    background-color:rgba(242, 40, 40, 0.866);;
+    filter: brightness(2);
+}

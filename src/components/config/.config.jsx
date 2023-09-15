@@ -1,6 +1,6 @@
 const config = {
     port: 8080,
-    baseURL: "http://localhost:8009/"   
+    baseURL: "https://consultasaque.com.br/"   
 
 
 }
