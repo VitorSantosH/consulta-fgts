@@ -23,6 +23,7 @@
     display: flex;
     width: auto;
     height: 100%;
+    min-height: 2rem;
     align-items: center;
     box-sizing: border-box;
     border: solid 1px transparent;
@@ -53,10 +54,89 @@
     margin: 0rem 1rem;
 }
 
+.moblileMenu {
+   
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    will-change: auto;
+    transition: all 300ms;
+    background-color: #434343;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    top: 4rem;
+    transform: translate3d(-100vw, 0, 0);
+    position: fixed;
+    box-sizing: border-box;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+
+.active {
+    will-change: auto;
+    transition: all 300ms;
+    z-index: 15;
+    opacity: 1;
+    top: 4rem;
+    transform: translate3d(0, 0, 0);
+    position: fixed;
+    left: 0;
+}
+
+.moblileMenu div {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    will-change: auto;
+    transition: all 400ms;
+    user-select: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.moblileMenu div:active {
+    background-color: rgba(245, 245, 245, 1);
+    color: #434343;
+}
+
+.containerLinksMoblile {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    will-change: auto;
+    transition: all 300ms;
+    font-size: 1.5rem;
+    height: 100%;
+    border-bottom: 8px solid transparent;
+    user-select: none;
+}
+
+.containerLinksMoblile i {
+    cursor: pointer;
+}
+
+.containerLinksMoblile:active {
+    padding-top: 10px;
+}
+
 @media only screen and (max-width: 850px) {
 
     .homeBtn {
         width: 25vw;
+        display: none;
+    }
+    .fixed {
+        display: flex;
     }
 
+    .containerLinksMoblile {
+        display: flex;
+    }
+    
 }

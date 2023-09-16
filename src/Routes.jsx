@@ -13,6 +13,7 @@ import Fgts from "./components/fgts/Fgts";
 import Login from "./components/login/Login";
 import Registro from "./components/registroConta/Registro";
 import Notificacoes from "./components/notificacao/Notificacoes";
+import Home from "./components/home/Home";
 
 const Rotas = () => {
 
@@ -20,6 +21,7 @@ const Rotas = () => {
 
         <Router>
             <Routes>
+                <Route exact path="home" element={<Home/>} />
                 <Route exact path="/notificacoes" element={<Notificacoes/>} />
                 <Route exact path="/registro" element={<Registro />} />
                 <Route exact path="/fgts" element={<Fgts />} />

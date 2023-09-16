@@ -4,6 +4,11 @@ import "./Login.css";
 import connect from "../config/connect";
 import Swal from "sweetalert2";
 
+
+
+//assets 
+import logo from '../../assets/maissaque.jpg'
+
 const Login = () => {
 
 
@@ -13,7 +18,7 @@ const Login = () => {
         loading: false
     })
     const navigate = useNavigate();
-    
+
     async function login() {
 
         if (!state.passwordValue || !state.emailValue) {
@@ -47,7 +52,7 @@ const Login = () => {
                 loading: false
             })
             sessionStorage.setItem('user', JSON.stringify(user.data))
-            return window.location.href = '/fgts'
+            return navigate('/home')
         }
 
     }
@@ -56,14 +61,18 @@ const Login = () => {
         <div className="Login">
 
             <div className="title">
-                <h1>
-                    Faça seu login na plataforma
-                </h1>
+                <img src={logo} alt="" />
             </div>
 
             <div className="console">
 
+                <div className="title">
+                    <h2>
+                        Faça seu login na plataforma
+                    </h2>
+                </div>
                 <div className="containerLogin">
+
                     <div className="email">
                         <i className="fa fa-envelope" aria-hidden="true">
                             <input

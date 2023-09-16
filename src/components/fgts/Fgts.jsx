@@ -21,7 +21,7 @@ const Fgts = props => {
         saldoTotalParcelas: undefined
     });
 
-   
+
     /**
      * 
      * cpf	Saldo_Liberado
@@ -116,7 +116,6 @@ const Fgts = props => {
 
     }
 
-
     function TotalParcelas(props) {
         console.log(props)
         if (!props) return parseFloat(0)
@@ -150,6 +149,21 @@ const Fgts = props => {
         return saldoTotalParcelas;
     }
 
+    function completarComZeros(numero, tamanhoMinimo) {
+        // Converte o número para uma string
+        let numeroString = numero.toString();
+
+        // Calcula quantos zeros à esquerda são necessários
+        const zerosFaltantes = tamanhoMinimo - numeroString.length;
+
+        // Se zerosFaltantes for maior que zero, adiciona zeros à esquerda
+        if (zerosFaltantes > 0) {
+            numeroString = '0'.repeat(zerosFaltantes) + numeroString;
+        }
+
+        return numeroString;
+    }
+
 
     return (
         <div className="fgts">
@@ -178,9 +192,8 @@ const Fgts = props => {
                                     placeholder="000.000.000-00"
                                     value={state.cpfValue || ""}
                                     //  style={{ 'borderColor': stateCadLoja.stateEmailStyle ? '' : '#EE3B3B' }}
-                                    onValueChange={(values) => {
+                                    onValueChange={(values, info) => {
                                         const { formattedValue, value } = values;
-
 
                                         return setState({
                                             ...state,
@@ -188,6 +201,35 @@ const Fgts = props => {
                                         })
 
                                     }}
+
+                                    onKeyPress={e => {
+                                        if (e.key === "Enter") {
+
+                                            if (state.cpfValue.length < 11) {
+                                                const newCpfValue = completarComZeros(state.cpfValue, 11)
+                                              return  setState({
+                                                    ...state,
+                                                    cpfValue: newCpfValue
+                                                })
+                                    
+                                            }
+
+                                            if (!cpfRegex.test(state.cpfValue)) {
+
+                                                return Swal.fire({
+                                                    icon: "error",
+                                                    title: 'Erro',
+                                                    text: 'Digite o cpf corretamente',
+                                                })
+
+                                            }
+
+
+
+                                            return getFgtsStatus();
+                                        }
+                                    }}
+
 
                                 />
                             </div>
