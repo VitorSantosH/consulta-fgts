@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 
 //assets 
-import logo from '../../assets/maissaque.jpg'
+import logo from '../../assets/maisSaqueLogoAz.jpg'
 
 const Login = () => {
 

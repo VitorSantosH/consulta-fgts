@@ -79,6 +79,12 @@ const Fgts = props => {
 
     async function getFgtsStatus() {
 
+        setState({
+            ...state,
+            loadingFgts: true
+        })
+
+
         const id = sessionStorage.getItem('user')
         const response = await connect.getFgtsStatus(state.cpfValue, id)
 
@@ -90,7 +96,7 @@ const Fgts = props => {
                 ...state,
                 //  cpfValue: "",
                 retornoFgts: response.retorno,
-                loadingFgts: true
+                loadingFgts: false
             })
 
         } else {
@@ -108,7 +114,8 @@ const Fgts = props => {
                 //  cpfValue: "",
                 retornoFgts: response.retorno,
                 fgtsError: true,
-                fgtsMsg: msg
+                fgtsMsg: msg,
+                loadingFgts: false
             })
         }
 
@@ -207,11 +214,11 @@ const Fgts = props => {
 
                                             if (state.cpfValue.length < 11) {
                                                 const newCpfValue = completarComZeros(state.cpfValue, 11)
-                                              return  setState({
+                                                return setState({
                                                     ...state,
                                                     cpfValue: newCpfValue
                                                 })
-                                    
+
                                             }
 
                                             if (!cpfRegex.test(state.cpfValue)) {
@@ -256,7 +263,15 @@ const Fgts = props => {
                                 }}
 
                             >
-                                Consultar
+                                {!state.loadingFgts && (
+                                    <span>
+                                        Consultar
+                                    </span>
+                                )}
+                                {state.loadingFgts && (
+                                    <div id="loading-bar-spinner" className="spinner">
+                                    </div>
+                                )}
                             </div>
                         </section>
 

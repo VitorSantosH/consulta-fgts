@@ -11,7 +11,7 @@ const Menu = () => {
     const navigate = useNavigate();
     const user = JSON.parse(sessionStorage.getItem('user'));
 
-    function logout () {
+    function logout() {
         sessionStorage.removeItem('user');
         return navigate('/')
     }
@@ -76,7 +76,7 @@ const Menu = () => {
                     </div>
                 )}
 
-                <div 
+                <div
                     className="homeBtn"
                     onClick={e => {
                         return logout();
@@ -111,10 +111,10 @@ const Menu = () => {
                         return navigate('/fgts')
                     }}
                 >
-                    <i className="fa fa-paper-plane-o"></i>
                     <span>
                         Apis
                     </span>
+                    <i className="fa fa-paper-plane-o"></i>
                 </div>
 
                 {user.role === "admin" && (
@@ -124,14 +124,27 @@ const Menu = () => {
                             return navigate("/notificacoes");
                         }}
                     >
-                        <i className="fa fa-bell">
-
-                        </i>
                         <span>
                             Notificações
                         </span>
+                        <i className="fa fa-bell">
+
+                        </i>
                     </div>
                 )}
+
+                <div
+                    className="homeBtn"
+                    onClick={e => {
+                        return logout();
+                    }}
+                >
+
+                    <span>
+                        Sair
+                    </span>
+                    <i className="fa fa-sign-out"></i>
+                </div>
             </div>
         </div>
     )

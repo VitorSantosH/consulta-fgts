@@ -1,10 +1,10 @@
 .Login {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
-    background-color:rgb(245, 245, 245);
+    background-color: rgb(18, 34, 86);
     color: rgb(18, 18, 20);
     height: 100vh;
 }
@@ -54,7 +54,7 @@
 }
 
 .email, .password {
-   
+
     color: rgb(18, 18, 20);
     display: flex;
     justify-content: center;
@@ -81,7 +81,7 @@
 }
 
 .console i:focus-within {
-    color: rgb(130, 87, 230);
+    color: rgb(18, 34, 86);
 }
 
 .password input:focus, .email input:focus, .password input:active, .email input:active {
@@ -92,8 +92,8 @@
 .password:focus-within, .email:focus-within, .password:active, .email:active {
     outline: none;
     border-color: #007bff;
-    border: solid 2px rgb(130, 87, 230);
-    box-shadow: 0 0 8px rgb(130, 87, 230);
+    border: solid 2px rgb(18, 34, 86);
+    box-shadow: 0 0 8px rgb(18, 34, 86);
 }
 
 .btnPadrão {
@@ -108,19 +108,20 @@
     color: rgb(255, 255, 255);
     padding: 0px 1em 0px 1em;
     border-radius: 5px;
-    background-color: rgb(99, 49, 218);
+    background-color: rgb(237, 141, 45);
     border: solid 1px transparent;
     margin: 10px;
     cursor: pointer;
 }
 
 .btnPadrão:hover {
-    background-color: rgb(100, 67, 180);
+
+    filter: brightness(1.25);
     color: white;
 }
 
 .btnPadrão:active {
-    background-color: rgb(70, 47, 150);
+    background-color: rgb(244, 130, 15);
     color: white;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
@@ -141,13 +142,18 @@
     width: 1rem;
     animation: loading-bar-spinner 400ms linear infinite;
 }
+
 .title h2 {
-    font-size:2rem;
+    font-size: 2rem;
 }
+
 .title img {
-    max-width: 40vw;
     height: auto;
+    width: 40vw;
+    min-width: 350px;
+    max-width: 480px;
 }
+
 @media only screen and (max-width: 850px) {
     .title, .console {
         width: 90vw;
@@ -164,7 +170,7 @@
     }
 
     .title img {
-        max-width: 80vw;
-        
+        max-width: 70vw;
+
     }
 }
