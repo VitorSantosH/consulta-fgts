@@ -184,15 +184,21 @@
 
 .btnConsultTable {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     width: 100%;
     padding: 1rem;
+    overflow-y: scroll;
 }
 
 .btnConsultTable div {
     margin: 1rem;
-    height: 45px;
+}
+.btnConsultTable .btn {
+    max-height: 50px;
+}
 
+.containerTablesCheked input {
+    cursor: pointer;
 }
 
 #loading-bar-spinner.spinner {
@@ -205,7 +211,10 @@
     animation: loading-bar-spinner 400ms linear infinite;
 }
 
-
+.containerTablesCheked {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 @keyframes loading-bar-spinner {
     0% {

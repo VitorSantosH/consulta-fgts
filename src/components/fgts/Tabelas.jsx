@@ -12,7 +12,19 @@ const Tabelas = (props) => {
         retornoFgts: props.parcelas,
         cpfValue: props.cpfValue,
         ...props,
+        tables: [
+            { name: 'GOLD RB', value: 46205, cheked: true },
+            { name: 'GOLD + RB', value: 46183, cheked: true },
+            { name: 'FLEX 2', value: 40789, cheked: true },
+            { name: 'FLEX 1', value: 40770, cheked: true },
+            { name: 'FLEX -', value: 40762, cheked: true },
+            { name: 'SMART', value: 40797, cheked: true },
+            { name: 'LIGHT RB', value: 46230, cheked: true },
+            { name: 'PLUS', value: 46213, cheked: true },
+            { name: 'PLUS +', value: 46191, cheked: true },
+        ]
     })
+
 
     useEffect(() => {
 
@@ -25,12 +37,17 @@ const Tabelas = (props) => {
 
     async function getFtgsTable() {
 
+        const tables = [] = state.tables.filter((table, i) => {
 
+            if(table.cheked) {
+                return table
+            } 
+        })
 
 
         const parans = {
             cpf: state.cpfValue,
-            table: "GOLD" || "GOLD",
+            table: tables,
             parcelas: []
         }
 
@@ -83,14 +100,14 @@ const Tabelas = (props) => {
 
     function containerDados() {
 
-        if(!state.table) return 
+        if (!state.table) return
 
         const tableComponents = [];
         const errorList = [];
 
         for (let index = 0; index < state.table.length; index++) {
 
-           
+
 
             if (state.table[index].permitido == "SIM") {
                 const component = (
@@ -118,16 +135,20 @@ const Tabelas = (props) => {
             }
 
         }
-       
 
-        errorList.map((e, i) => {
-          
+
+        /**
+         * 
+         *  errorList.map((e, i) => {
+
             Swal.fire({
                 title: "Erro",
                 icon: "error",
                 text: e
             })
         })
+         */
+       
 
         return setState({
             ...state,
@@ -136,9 +157,50 @@ const Tabelas = (props) => {
 
     }
 
+    const GenerateTablesComponent = () => {
+
+        const component = [] = state.tables.map((table, i) => {
+
+            return (
+                <div key={table.value}>
+                    <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        checked={table.cheked}
+                        onChange={e => {
+
+
+                            
+                            const newTable = state.tables
+                            newTable[i].cheked = !newTable[i].cheked
+
+                            setState({
+                                ...state,
+                                tables: newTable
+                            })
+                        }}
+                    />
+                    <span>
+                        {`${table.name} `}
+                    </span>
+
+                </div>
+            )
+        })
+
+        return component;
+
+    }
+
     return (
         <>
             <div className="btnConsultTable">
+
+                <div className="containerTablesCheked">
+                    {GenerateTablesComponent()}
+                </div>
+
                 <div
                     className="btn"
                     onClick={e => {
@@ -163,6 +225,8 @@ const Tabelas = (props) => {
                         </div>
                     )}
                 </div>
+
+
             </div>
             {state.table && (
                 <div
