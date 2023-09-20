@@ -76,14 +76,25 @@ const Fgts = props => {
 
     }, [])
 
+    function reset(loading, cpf) {
+
+        return setState({
+            cpfValue: cpf,
+            retornoFgts: undefined,
+            retornoFgtsConst: undefined,
+            fgtsError: false,
+            fgtsMsg: "",
+            retornoComponent: undefined,
+            loadingFgts: loading,
+            table: undefined,
+            saldoTotalParcelas: undefined
+        });
+
+    }
 
     async function getFgtsStatus() {
 
-        setState({
-            ...state,
-            loadingFgts: true
-        })
-
+        reset(true, state.cpfValue);
 
         const id = sessionStorage.getItem('user')
         const response = await connect.getFgtsStatus(state.cpfValue, id)
@@ -124,7 +135,7 @@ const Fgts = props => {
     }
 
     function TotalParcelas(props) {
-        console.log(props)
+
         if (!props) return parseFloat(0)
 
         let saldoTotalParcelas = 0;
@@ -132,9 +143,9 @@ const Fgts = props => {
         for (let index = 1; index < 11; index++) {
             let num = parseFloat(props[`valor_${index}`])
             saldoTotalParcelas += num;
-            console.log(num)
+
         }
-        console.log('aqui')
+
         /**
          *    const component = (
                <div className="containerDados">
@@ -327,7 +338,7 @@ const Fgts = props => {
                                     </thead>
                                 </table>
 
-                                <SaldoParcelas state={state} />
+                                <SaldoParcelas state={state}  />
 
                             </div>
 

@@ -26,13 +26,26 @@ const Tabelas = (props) => {
     })
 
 
+   
+
+    if(props.cpfValue != state.cpfValue) {
+
+        console.log(state)
+
+        return setState({
+            ...state,
+            cpfValue: props.cpfValue
+        })
+    }
+
     useEffect(() => {
 
         if (state.parcelas) {
             return containerDados();
         }
+      
 
-    }, [state.table, state.table, props.state])
+    }, [state.table, state.table, props.state, props ])
 
 
     async function getFtgsTable() {

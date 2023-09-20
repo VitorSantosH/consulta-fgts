@@ -7,11 +7,13 @@ const SaldoParcelas = (props) => {
     const [state, setState] = useState({
         parcelas: constRetorno,
         refs: [],
-        ...props.state
+        ...props.state,
     })
 
 
-
+    useEffect(()=> {
+        
+    }, [props])
 
     function ContructFgtsComponent(props) {
 
