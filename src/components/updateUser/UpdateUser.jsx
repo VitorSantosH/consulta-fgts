@@ -1,44 +1,39 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
-import "./Registro.css";
-import Swal from "sweetalert2";
-import NumberFormat from 'react-number-format'
+import { useNavigate } from 'react-router-dom';
+import './UpdateUser.css';
+import Swal from 'sweetalert2';
+import Menu from '../menu/Menu.jsx';
 import connect from "../config/connect";
 
-const Registro = () => {
+const UpdateUser = () => {
 
-    const [state, setState] = useState({
-        name: "",
-        email: "",
-        tel: "",
-        password: "",
-        msg: "",
-        lock: true,
-        emailRegexClass: 'name',
-        loading: false,
-        formattedValue: ""
-    })
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    const emailRegex = /^[\w!#$%&'*+/=?`{|}~^-]*(@[\w!#$%&'*+/=?`{|}~^-]+(\.[\w!#$%&'*+/=?`{|}~^-]+)*)?(@[\w!#$%&'*+/=?`{|}~^-]+)?$/;
     const navigate = useNavigate();
-    const emailRegex = /^[\w!#$%&'*+/=?`{|}~^-]+(?:\.[\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}$/;
-    const data = {
-        "email": "vitor@testemail.com",
-        "name": "vitor",
-        "password": "$2b$10$cyUA32kbImltJNOkXwJeBurs/BdHpHH0W2q90SevHhW5tethsegYC",
-        "tel": "31996400879",
-        "msg": "31996400879",
-        "_id": "6502e58d47523bd27eed5a4e",
-        "__v": 0
-    }
-    async function generateNewAcc() {
+    const [state, setState] = useState({
+        name: user.name,
+        email: user.email,
+        oldPassword: "",
+        password: "",
+        confirmeNewPassword: "",
+        showPassword: true,
+        showOldPassword: true,
+        loading: false,
+        token: user.token,
 
-        if (!state.email || !state.password || !state.tel || !state.name) {
+    });
+
+
+    async function updateUser() {
+
+        if (!state.email || !state.password || !state.name || !state.oldPassword) {
             return Swal.fire({
                 title: "Error",
                 text: "Preencha todos os campos"
             })
         }
 
-        const response = await connect.generateNewAcc(state);
+        const response = await connect.updateUser(state);
 
         console.log(response)
 
@@ -46,7 +41,7 @@ const Registro = () => {
             Swal.fire({
                 icon: 'success',
                 title: "Sucesso",
-                text: "Solicitação realizada com sucesso, aguade e entraremos em contato"
+                text: "Atualização realizada com sucesso"
             })
 
             setState({
@@ -54,7 +49,8 @@ const Registro = () => {
                 loading: false
             })
 
-            return navigate('/')
+            return navigate('/');
+
         } else {
             Swal.fire({
                 icon: "error",
@@ -71,15 +67,15 @@ const Registro = () => {
 
     }
 
+
     return (
-        <div className="registro">
-
-
+        <div className="updateUser">
+            <Menu />
 
             <div className="containerRegistroForm">
 
                 <h2>
-                    Registre-se
+                    Atualize os dados do usuario {user.name}
                 </h2>
 
                 <div className="nameRegistro">
@@ -89,6 +85,7 @@ const Registro = () => {
                             name=""
                             id=""
                             placeholder="Digite seu nome..."
+                            value={state.name}
                             onChange={e => {
                                 setState({
                                     ...state,
@@ -107,6 +104,7 @@ const Registro = () => {
                             name=""
                             id=""
                             placeholder="Digite seu email..."
+                            value={state.email}
                             onChange={e => {
                                 setState({
                                     ...state,
@@ -118,14 +116,41 @@ const Registro = () => {
                     </i>
                 </div>
 
+                <div className="passwordRegistro">
+                    <i className="fa fa-lock">
+                        <input
+                            type={state.showOldPassword ? 'password' : "text"}
+                            name=""
+                            id=""
+                            placeholder="Digite a senha atual"
+                            value={state.oldPassword}
+                            onChange={e => {
+                                setState({
+                                    ...state,
+                                    oldPassword: e.target.value
+                                })
+                            }}
+                        />
+                        <i
+                            className={state.showOldPassword ? "fa fa-eye-slash" : "fa fa-eye"}
+                            onClick={e => {
+                                return setState({
+                                    ...state,
+                                    showOldPassword: !state.showOldPassword
+                                })
+                            }}
+                        ></i>
+                    </i>
+                </div>
 
                 <div className="passwordRegistro">
                     <i className="fa fa-lock">
                         <input
-                            type={state.lock ? 'password' : "text"}
+                            type={state.showPassword ? 'password' : "text"}
                             name=""
                             id=""
-                            placeholder="Digite sua senha..."
+                            placeholder="Digite a nova senha..."
+                            value={state.password}
                             onChange={e => {
                                 setState({
                                     ...state,
@@ -134,67 +159,47 @@ const Registro = () => {
                             }}
                         />
                         <i
-                            className={state.lock ? "fa fa-eye-slash" : "fa fa-eye"}
+                            className={state.showPassword ? "fa fa-eye-slash" : "fa fa-eye"}
                             onClick={e => {
                                 return setState({
                                     ...state,
-                                    lock: !state.lock
+                                    showPassword: !state.showPassword
                                 })
                             }}
                         ></i>
                     </i>
                 </div>
 
-                <div className='emailRegistro'>
-                    <i className="fa fa-phone">
-                        <NumberFormat
-                            format="+55 (##) #####-####"
-                            className='inputTel'
-                            aria-describedby=""
-                            placeholder="(11) 98000-0000"
-                            value={state.formattedValue || ""}
-                            //  style={{ 'borderColor': stateCadLoja.stateEmailStyle ? '' : '#EE3B3B' }}
-                            onValueChange={(values) => {
-                                const { formattedValue, value } = values;
-                                //let cellPattern = new RegExp(/^([0-9]{2}[9]{1}[0-9]{7,8})$/);
-
-                                console.log(formattedValue)
-                                return setState({
-                                    ...state,
-                                    formattedValue: formattedValue,
-                                    tel: value
-                                })
-
-
-                            }}
-                        />
-                    </i>
-                </div>
-
-
-                <div className="msg">
-                    <i className="fa fa-commenting">
-                        <textarea
-                            type="text"
+                <div className="passwordRegistro">
+                    <i className="fa fa-lock">
+                        <input
+                            type={state.showPassword ? 'password' : "text"}
                             name=""
                             id=""
-                            placeholder="Fique a vontade para mandar uma mensagem ao administrador do sistema...."
+                            placeholder="Digite novamente a nova senha"
+                            value={state.confirmeNewPassword}
                             onChange={e => {
                                 setState({
                                     ...state,
-                                    msg: e.target.value
+                                    confirmeNewPassword: e.target.value
                                 })
                             }}
                         />
+                        <i
+                            className={state.showPassword ? "fa fa-eye-slash" : "fa fa-eye"}
+                            onClick={e => {
+                                return setState({
+                                    ...state,
+                                    showPassword: !state.showPassword
+                                })
+                            }}
+                        ></i>
                     </i>
                 </div>
-
 
                 <section
                     className="btn"
                     onClick={e => {
-
-
 
                         if (!emailRegex.test(state.email)) {
                             return Swal.fire({
@@ -203,7 +208,16 @@ const Registro = () => {
                                 text: "Digite um e-mail válido"
                             })
                         }
-                        if (!state.email || !state.password || !state.tel || !state.name) {
+
+                        if (state.password != state.confirmeNewPassword) {
+                            return Swal.fire({
+                                title: "Erro",
+                                icon: 'error',
+                                text: "As duas senhas não batem."
+                            })
+                        }
+
+                        if (!state.email || !state.password || !state.name || !state.oldPassword) {
                             return Swal.fire({
                                 title: "Erro",
                                 icon: 'error',
@@ -216,14 +230,14 @@ const Registro = () => {
                             loading: true
                         })
 
-                        return generateNewAcc();
+                        return updateUser();
 
                     }}
                 >
 
                     {!state.loading && (
                         <span>
-                            Registrar
+                            Atualizar dados
                         </span>
                     )}
 
@@ -241,4 +255,4 @@ const Registro = () => {
 }
 
 
-export default Registro;
+export default UpdateUser;

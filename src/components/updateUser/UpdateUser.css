@@ -1,0 +1,23 @@
+.updateUser {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dadosUser {
+    margin: 2rem;
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 90vw;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 10px 0px 8px 0px rgba(0, 0, 0, 0.10);
+}
+
+.dadosUser h2 {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}

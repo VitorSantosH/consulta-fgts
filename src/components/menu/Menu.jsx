@@ -49,6 +49,9 @@ const Menu = () => {
             <div className="menuArea2">
                 <div
                     className="homeBtn"
+                    onClick={e => {
+                        return navigate('/user')
+                    }}
                 >
                     <i className="fa fa-user">
 
@@ -103,7 +106,22 @@ const Menu = () => {
             </div>
 
             <div className={state.showMobileMenu ? "moblileMenu active" : "moblileMenu"}>
+                <div
+                    className="homeBtn"
+                    onClick={e => {
+                        return navigate('/user')
+                    }}
+                >
 
+                    <span>
+                        {
+                            user.name
+                        }
+                    </span>
+                    <i className="fa fa-user">
+
+                    </i>
+                </div>
 
                 <div
                     className="homeBtn"

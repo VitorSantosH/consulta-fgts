@@ -192,8 +192,35 @@ const connect = {
             })
 
         return response
-    }
+    },
+    updateUser: async (props) => {
 
+
+        const response = await api.post('/user/update', {
+
+            email: props.email,
+            password: props.password,
+            name: props.name,
+            oldPassword: props.oldPassword,
+            token: props.token
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+
+    },
 
 }
 
