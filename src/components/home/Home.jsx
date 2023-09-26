@@ -10,7 +10,7 @@ const Home = () => {
         <div className="home">
             <Menu />
             <div className="homeContainer">
-                <h1>Bem vindo! {`${user.name}`}</h1>
+                <h1>Bem vindo, {`${user.name}`}</h1>
             </div>
            
         </div>

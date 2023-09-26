@@ -10,10 +10,11 @@ const SaldoParcelas = (props) => {
         ...props.state,
     })
 
-
     useEffect(()=> {
         
     }, [props])
+
+  
 
     function ContructFgtsComponent(props) {
 

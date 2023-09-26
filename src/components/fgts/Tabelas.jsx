@@ -4,6 +4,34 @@ import Swal from "sweetalert2";
 
 const Tabelas = (props) => {
 
+    const user = JSON.parse(sessionStorage.getItem('user'))
+    const tables = [
+        { name: 'GOLD RB', value: 46205, cheked: true },
+        { name: 'GOLD + RB', value: 46183, cheked: true },
+        { name: 'FLEX 2', value: 40789, cheked: true },
+        { name: 'FLEX 1', value: 40770, cheked: true },
+        { name: 'FLEX -', value: 40762, cheked: true },
+        { name: 'SMART', value: 40797, cheked: true },
+        { name: 'LIGHT RB', value: 46230, cheked: true },
+        { name: 'PLUS', value: 46213, cheked: true },
+        { name: 'PLUS +', value: 46191, cheked: true },
+    ]
+
+    for (let index = 0; index < tables.length; index++) {
+        
+        const foundItem = user.tables.find(function (item) {
+            return item.name === tables[index].name
+        })
+
+        if(foundItem) {
+            tables[index].cheked = true
+        } else  {
+            tables[index].cheked = false
+        }
+
+    }
+
+   
 
     const [state, setState] = useState({
         loading: false,
@@ -12,23 +40,11 @@ const Tabelas = (props) => {
         retornoFgts: props.parcelas,
         cpfValue: props.cpfValue,
         ...props,
-        tables: [
-            { name: 'GOLD RB', value: 46205, cheked: true },
-            { name: 'GOLD + RB', value: 46183, cheked: true },
-            { name: 'FLEX 2', value: 40789, cheked: true },
-            { name: 'FLEX 1', value: 40770, cheked: true },
-            { name: 'FLEX -', value: 40762, cheked: true },
-            { name: 'SMART', value: 40797, cheked: true },
-            { name: 'LIGHT RB', value: 46230, cheked: true },
-            { name: 'PLUS', value: 46213, cheked: true },
-            { name: 'PLUS +', value: 46191, cheked: true },
-        ]
+        tables: tables
     })
 
 
-   
-
-    if(props.cpfValue != state.cpfValue) {
+    if (props.cpfValue != state.cpfValue) {
 
         console.log(state)
 
@@ -43,24 +59,25 @@ const Tabelas = (props) => {
         if (state.parcelas) {
             return containerDados();
         }
-      
 
-    }, [state.table, state.table, props.state, props ])
+
+    }, [state.table, state.table, props.state, props])
 
 
     async function getFtgsTable() {
 
         const tables = [] = state.tables.filter((table, i) => {
 
-            if(table.cheked) {
+            if (table.cheked) {
                 return table
-            } 
+            }
         })
 
 
         const parans = {
             cpf: state.cpfValue,
             table: tables,
+            user: user,
             parcelas: []
         }
 
@@ -84,10 +101,14 @@ const Tabelas = (props) => {
 
 
 
-        const table = await connect.getFtgsTable(parans)
+        const response = await connect.getFtgsTable(parans)
+        const newUser = {
+            ...user, 
+            ...response.payload
+        }
+        sessionStorage.setItem('user', JSON.stringify(newUser))
 
-
-        if (table.length <= 0) {
+        if (response.dataTabelas.length <= 0) {
             setState({
                 ...state,
                 loading: false
@@ -100,8 +121,8 @@ const Tabelas = (props) => {
         } else {
             return setState({
                 ...state,
-                table: table,
-                loading: false
+                table: response.dataTabelas,
+                loading: false,
             })
 
         }
@@ -161,7 +182,7 @@ const Tabelas = (props) => {
             })
         })
          */
-       
+
 
         return setState({
             ...state,
@@ -184,7 +205,7 @@ const Tabelas = (props) => {
                         onChange={e => {
 
 
-                            
+
                             const newTable = state.tables
                             newTable[i].cheked = !newTable[i].cheked
 
