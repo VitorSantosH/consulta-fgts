@@ -3,4 +3,78 @@
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
+    align-items: center;
+    color: rgb(18, 34, 86);
+    ;
+}
+
+
+
+.homeContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerTails {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.usersDiv {
+    font-size: 3rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 10px 0px 8px 0px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    min-width: 250px;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin: 1rem;
+    padding: 1rem;
+    transition: all 400ms;
+    cursor: pointer;
+    color: rgb(237, 141, 45);
+    font-weight: 600;
+    color: rgb(18, 34, 86);
+}
+
+.usersDiv i {
+    color: rgb(237, 141, 45);
+}
+
+.usersDiv:hover i {
+    color: #fff;
+}
+
+.usersDiv:hover {
+    background-color: rgb(237, 141, 45);
+    color: #fff;
+}
+
+.usersDiv:active {
+    transform: translate3d(0px, 5px, 0px);
+}
+
+.usersDiv span {
+    font-size: 1.5rem;
+}
+
+
+
+@media only screen and (max-width: 850px) {
+    .usersDiv {
+        width: 90vw;
+    }
 }

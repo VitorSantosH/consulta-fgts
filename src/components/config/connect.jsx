@@ -59,50 +59,6 @@ const connect = {
 
     },
 
-    getLogs: async (props) => {
-
-        const response = await api.get('/logs', {
-            headers: {
-                'Authorization': `${localStorage.getItem('autorization')}`,
-            },
-        })
-            .then(res => {
-
-                return res
-
-            }).catch(err => {
-
-                return err.response
-            })
-
-
-
-        return response
-
-    },
-
-    deletLogs: async (props) => {
-
-        const response = await api.get('/deleteLogs', {
-            headers: {
-                'Authorization': `${localStorage.getItem('autorization')}`,
-            },
-        })
-            .then(res => {
-
-                return res
-
-            }).catch(err => {
-
-                return err.response
-            })
-
-
-
-        return response
-
-    },
-
     getFgtsStatus: async (cpf, id) => {
 
         const parans = {
@@ -193,6 +149,7 @@ const connect = {
 
         return response
     },
+
     updateUser: async (props) => {
 
 
@@ -222,6 +179,56 @@ const connect = {
 
     },
 
+    getUsers: async (props) => {
+
+        
+        const response = await api.post('/user/all', {
+
+            token: props
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+
+    },
+
+    deleteUser: async (props) => {
+
+    
+        const response = await api.post('/user/deleteuser', {
+
+            token: props.token,
+            userId: props.deleteId
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+
+    }
 }
 
 
