@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ManageUsers.css"
 import Menu from "../menu/Menu";
 import connect from "../config/connect";
@@ -12,6 +13,7 @@ const ManageUsers = () => {
         users: undefined,
         usersTails: []
     })
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -44,9 +46,9 @@ const ManageUsers = () => {
     async function deleteUser(props) {
 
         const response = await connect.deleteUser(props)
-        
-        if(response.status === 200) {
-            
+
+        if (response.status === 200) {
+
             Swal.fire({
                 icon: 'success',
                 title: "Sucesso!",
@@ -82,7 +84,12 @@ const ManageUsers = () => {
                     </span>
                     <span>
                         historico
-                        <i className="fa fa-share"></i>
+                        <i 
+                            className="fa fa-share"
+                            onClick={e => {
+                                return navigate(`/historico/${u._id}`)
+                            }}
+                        ></i>
                     </span>
 
                     <div className="deleteBtnContainer">

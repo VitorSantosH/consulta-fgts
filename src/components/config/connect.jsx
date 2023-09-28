@@ -100,9 +100,9 @@ const connect = {
 
     getNotify: async (props) => {
 
-        
-        
-      
+
+
+
         const response = await api.post('/user/solicicoes', {
 
             user: JSON.stringify(props)
@@ -122,11 +122,11 @@ const connect = {
             })
 
         return response
-    }, 
+    },
 
     resolveNotify: async (props) => {
 
-       
+
         const response = await api.post('/user/solicitacoes/resolve', {
             user: props.user,
             newUser: props.newUser,
@@ -181,7 +181,7 @@ const connect = {
 
     getUsers: async (props) => {
 
-        
+
         const response = await api.post('/user/all', {
 
             token: props
@@ -206,7 +206,7 @@ const connect = {
 
     deleteUser: async (props) => {
 
-    
+
         const response = await api.post('/user/deleteuser', {
 
             token: props.token,
@@ -228,7 +228,32 @@ const connect = {
 
         return response
 
+    },
+
+    getHistory: async (props) => {
+
+        const response = await api.post('/fgts/history', {
+
+            token: props.token,
+            userId: props.userId
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
     }
+    
 }
 
 

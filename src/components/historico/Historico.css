@@ -1,0 +1,49 @@
+.historico {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    color: rgb(18, 34, 86);
+
+}
+.historico h2 { 
+    margin: 2rem;
+    font-size: 2rem;
+}
+
+.historyComponent {
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 10px 0px 8px 0px rgba(0, 0, 0, 0.10);
+}
+
+.historyComponent, .historyComponent .data {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    line-height: 2rem;
+}
+
+.historyComponent .data {
+
+    margin: 1rem 0;
+}
+
+.notApr {
+    padding: 4px; 
+    background-color: rgb(236, 99, 99);
+    border-radius: 8px;
+}
+
+.apr {
+    padding: 4px; 
+    background-color: rgba(57, 209, 44, 0.685);
+    border-radius: 8px;
+}

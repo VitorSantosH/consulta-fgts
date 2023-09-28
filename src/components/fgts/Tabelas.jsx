@@ -73,7 +73,6 @@ const Tabelas = (props) => {
             }
         })
 
-
         const parans = {
             cpf: state.cpfValue,
             table: tables,
@@ -81,9 +80,7 @@ const Tabelas = (props) => {
             parcelas: []
         }
 
-
         for (let index = 1; index < 12; index++) {
-
 
             if (state.retornoFgts[`dataRepasse_${index}`]) {
                 let component = {
@@ -94,12 +91,7 @@ const Tabelas = (props) => {
                 parans.parcelas.push(component)
             }
 
-
-
-
         }
-
-
 
         const response = await connect.getFtgsTable(parans)
         const newUser = {
@@ -107,7 +99,7 @@ const Tabelas = (props) => {
             ...response.payload
         }
         sessionStorage.setItem('user', JSON.stringify(newUser))
-
+        console.log(response)
         if (response.dataTabelas.length <= 0) {
             setState({
                 ...state,
@@ -126,8 +118,6 @@ const Tabelas = (props) => {
             })
 
         }
-
-
 
 
     }

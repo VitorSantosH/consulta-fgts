@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Home.css';
 import Menu from "../menu/Menu";
 
@@ -15,34 +15,36 @@ const Home = () => {
                 <h1>Bem vindo, {`${user.name}`}</h1>
 
                 <div className="containerTails">
-                   
-                    <div 
+
+                    <div
                         className="usersDiv"
                         onClick={e => navigate('/fgts')}
-                        >
+                    >
 
                         <i className="fa fa-codepen">
                         </i>
 
                         <span>
-                           API Facta
+                            API Facta
                         </span>
 
                     </div>
 
-                    <div 
-                        className="usersDiv"
-                        onClick={e => navigate('/manage/users')}
-                    >
+                    {user.role === "admin" && (
+                        <div
+                            className="usersDiv"
+                            onClick={e => navigate('/manage/users')}
+                        >
 
-                        <i className="fa fa-users">
-                        </i>
+                            <i className="fa fa-users">
+                            </i>
 
-                        <span>
-                            Gerencie os usuários
-                        </span>
+                            <span>
+                                Gerencie os usuários
+                            </span>
 
-                    </div>
+                        </div>
+                    )}
 
 
                 </div>
