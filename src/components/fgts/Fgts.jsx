@@ -99,9 +99,21 @@ const Fgts = props => {
         const id = sessionStorage.getItem('user')
         const response = await connect.getFgtsStatus(state.cpfValue, id)
 
+       
+
+        if(response.permitido == "NAO") {
+
+            Swal.fire({
+                title: "Erro",
+                icon: 'error',
+                text: `${response.msg}`
+            })
+        }
+
         if (!response.erro) {
 
             sessionStorage.setItem('retonoConst', JSON.stringify(response.retorno))
+
 
             return setState({
                 ...state,
@@ -129,6 +141,8 @@ const Fgts = props => {
                 loadingFgts: false
             })
         }
+
+        
 
 
 

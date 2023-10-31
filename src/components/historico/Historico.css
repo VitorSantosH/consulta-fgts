@@ -7,7 +7,8 @@
     color: rgb(18, 34, 86);
 
 }
-.historico h2 { 
+
+.historico h2 {
     margin: 2rem;
     font-size: 2rem;
 }
@@ -21,11 +22,22 @@
     background-color: #fff;
     box-sizing: border-box;
     box-shadow: 10px 0px 8px 0px rgba(0, 0, 0, 0.10);
+    width: 30vw;
+    min-width: 300px;
+    max-width: 450px;
+}
+.historico .container {
+    display: flex;
+    width: 100vw;
+    padding: 0px 1rem;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
 }
 
 .historyComponent, .historyComponent .data {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     line-height: 2rem;
@@ -37,13 +49,21 @@
 }
 
 .notApr {
-    padding: 4px; 
+    padding: 4px;
     background-color: rgb(236, 99, 99);
     border-radius: 8px;
 }
 
 .apr {
-    padding: 4px; 
+    padding: 4px;
     background-color: rgba(57, 209, 44, 0.685);
     border-radius: 8px;
+}
+
+
+@media only screen and (max-width: 850px) {
+    .historyComponent {
+
+        min-width: 90vw
+    }
 }

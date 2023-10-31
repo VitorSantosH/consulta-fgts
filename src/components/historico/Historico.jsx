@@ -13,7 +13,7 @@ const Historico = () => {
         historyData: undefined,
         historyComponent: undefined
     })
-
+    let keyProp = 0
     //  const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,12 +47,21 @@ const Historico = () => {
         const historyComponent = [] = state.historyData.map((history, i) => {
 
             const results = [] = history.data.map((data, i) => {
+
+                keyProp = (keyProp + 1 + i)
+
+
+
                 return (
-                    <div className="data">
+                    <div
+                        className="data"
+                        key={keyProp}
+                    >
 
                         <span
                             className={data.permitido !== "SIM" ? "notApr" : "apr"}
                         >
+
                             {`Permitido: ${data.permitido}`}
                         </span>
 
@@ -72,8 +81,14 @@ const Historico = () => {
                 )
             })
 
+            keyProp = (keyProp + 1 + i)
+
+
             return (
-                <div className="historyComponent">
+                <div
+                    className="historyComponent"
+                    key={keyProp}
+                >
                     <span>
                         {`cpf: ${history.cpf}`}
                     </span>
@@ -89,6 +104,8 @@ const Historico = () => {
             )
         })
 
+
+
         return setState({
             ...state,
             historyComponent
@@ -102,8 +119,10 @@ const Historico = () => {
             <Menu />
 
             <h2>Historico</h2>
-            
-            {state.historyComponent}
+
+            <div className="container">
+                {state.historyComponent}
+            </div>
 
         </div>
     )

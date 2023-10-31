@@ -10,11 +10,11 @@ const SaldoParcelas = (props) => {
         ...props.state,
     })
 
-    useEffect(()=> {
-        
+    useEffect(() => {
+
     }, [props])
 
-  
+
 
     function ContructFgtsComponent(props) {
 
@@ -91,18 +91,22 @@ const SaldoParcelas = (props) => {
                             //   console.log(state.refs[index])
                             //  state.refs[index].current.children[3].children[0].attributes.checked = 
 
+                            // verifica se novo valor é maior que 0 e altera checkbox
                             if (e.target.value > 0) {
                                 state.refs[index] = true
                             } else {
                                 state.refs[index] = false
                             }
 
+                            // converte em float 
                             if (parseFloat(e.target.value) > parseFloat(constRetorno[`valor_${index}`])) {
                                 e.target.value = parseFloat(constRetorno[`valor_${index}`])
                             }
 
                             let novoDataFgts = state.parcelas
                             novoDataFgts[`valor_${index}`] = parseFloat(e.target.value)
+
+        
                             return setState({
                                 ...state,
                                 parcelas: novoDataFgts
