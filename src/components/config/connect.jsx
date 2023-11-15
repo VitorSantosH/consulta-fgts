@@ -179,6 +179,60 @@ const connect = {
 
     },
 
+    updateUserPassword: async (props) => {
+
+        const response = await api.post('/user/update/userPassword', {
+
+            email: props.email,
+            newPassword: props.password,
+            name: props.name,
+            token: props.token
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+
+    },
+
+    getUser: async (props) => {
+
+
+        const response = await api.post('/user/getUser', {
+
+            userId: props.userId,
+            token: props.token
+
+        }, {
+            headers: {
+                //  'Authorization': `${sessionStorage.getItem('authToken')}`,
+            },
+        })
+            .then(res => {
+
+                return res
+
+            }).catch(err => {
+
+                return err.response
+            })
+
+        return response
+
+    },
+
+
     getUsers: async (props) => {
 
 
@@ -253,7 +307,7 @@ const connect = {
 
         return response
     }
-    
+
 }
 
 
