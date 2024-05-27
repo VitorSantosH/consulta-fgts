@@ -1,14 +1,11 @@
 const config = {
-    port: 8080,
-    baseURL: "http://localhost:8009/"
-
+    port: 8011,
+    baseURL: "https://apifgts.com.br/"
 
 }
-//    baseURL: "http://localhost:8080/",
-// "https://vitorwebdev.com.br/"
-/**
- * "https://consultasaque.com.br/" 
- * "http://localhost:8009/"
- */
+// "http://localhost:8011/",
+// "https://apifgts.com.br/"
+// "https://consultasaque.com.br/"
+
 
 export default config;

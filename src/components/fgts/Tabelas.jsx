@@ -6,15 +6,21 @@ const Tabelas = (props) => {
 
     const user = JSON.parse(sessionStorage.getItem('user'))
     const tables = [
-        { name: 'GOLD RB', value: 46205, cheked: true },
-        { name: 'GOLD + RB', value: 46183, cheked: true },
-        { name: 'FLEX 2', value: 40789, cheked: true },
-        { name: 'FLEX 1', value: 40770, cheked: true },
-        { name: 'FLEX -', value: 40762, cheked: true },
-        { name: 'SMART', value: 40797, cheked: true },
-        { name: 'LIGHT RB', value: 46230, cheked: true },
-        { name: 'PLUS', value: 46213, cheked: true },
-        { name: 'PLUS +', value: 46191, cheked: true },
+        { name: 'GOLD SMART SELECT', value: 53708, checked: true },
+        { name: 'GOLD SMART TURBO', value: 53279, checked: true },
+        { name: 'GOLD SMART VIP', value: 53260, checked: true },
+        { name: 'GOLD SMART FLEX', value: 53252, checked: true },
+        { name: 'GOLD +', value: 53287, checked: true },
+        { name: 'GOLD POWER', value: 53678, checked: true },
+        { name: 'GOLD PRIME', value: 53694, checked: true },
+        { name: 'GOLD RN', value: 53236, checked: true },
+        { name: 'SMART LIGHT', value: 53244, checked: true },
+        { name: 'GOLD SPEED', value: 53686, checked: true },
+        { name: 'FGTS LIGHT', value: 50407, checked: true },
+        { name: 'FGTS PLUS', value: 53210, checked: true },
+        { name: 'FGTS PLUS +', value: 53201, checked: true },
+        { name: 'FGTS SMART FLEX', value: 53252, checked: true },
+        { name: 'FGTS TOP', value: 53228, checked: true }
     ]
 
     for (let index = 0; index < tables.length; index++) {
