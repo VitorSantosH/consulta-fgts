@@ -30,6 +30,37 @@ const Home = () => {
 
                     </div>
 
+                    <div
+                        className="usersDiv"
+                       // onClick={e => navigate(`/historico/${user.id}`)}
+                    >
+
+                        <i
+                            className="panStyle"
+                        >
+                            P
+                        </i>
+
+                        <span>
+                            API Pan
+                        </span>
+
+                    </div>
+
+                    <div
+                        className="usersDiv"
+                        onClick={e => navigate(`/historico/${user.id}`)}
+                    >
+
+                        <i className="fa fa-history">
+                        </i>
+
+                        <span>
+                            Histórico de pesquisa
+                        </span>
+
+                    </div>
+
                     {user.role === "admin" && (
                         <div
                             className="usersDiv"

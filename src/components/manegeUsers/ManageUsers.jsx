@@ -18,12 +18,10 @@ const ManageUsers = () => {
     useEffect(() => {
 
         if (!state.loaded) {
-            console.log(user.token)
             getUsers(user.token);
         }
 
         if (state.users) {
-            console.log("aqui")
             GenerateUsersTails()
         }
 
@@ -33,7 +31,6 @@ const ManageUsers = () => {
 
         const response = await connect.getUsers(props)
 
-        console.log(response)
 
         return setState({
             ...state,
@@ -69,7 +66,6 @@ const ManageUsers = () => {
 
     function GenerateUsersTails() {
 
-        console.log(state)
         if (state.users.lenght <= 0) return
 
         const usersTails = [] = state.users.map((u, i) => {
@@ -84,10 +80,20 @@ const ManageUsers = () => {
                     </span>
                     <span>
                         historico
-                        <i 
+                        <i
                             className="fa fa-share"
                             onClick={e => {
                                 return navigate(`/historico/${u._id}`)
+                            }}
+                        ></i>
+                    </span>
+
+                    <span>
+                        Alterar senha
+                        <i
+                            className="fa fa-edit"
+                            onClick={e => {
+                                return navigate(`/edit-password-user/${u._id}`)
                             }}
                         ></i>
                     </span>
@@ -125,7 +131,6 @@ const ManageUsers = () => {
             )
         })
 
-        console.log(usersTails)
 
         return setState({
             ...state,

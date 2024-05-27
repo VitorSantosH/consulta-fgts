@@ -17,6 +17,7 @@ import Home from "./components/home/Home";
 import UpdateUser from "./components/updateUser/UpdateUser";
 import ManageUsers from "./components/manegeUsers/ManageUsers";
 import Historico from "./components/historico/Historico";
+import EditPassword from "./components/manegeUsers/EditPassword";
 
 const Rotas = () => {
 
@@ -24,6 +25,7 @@ const Rotas = () => {
 
         <Router>
             <Routes>
+                <Route exact path="/edit-password-user/:id" element={<EditPassword/>} />
                 <Route exact path="/historico/:id" element={<Historico/>} />
                 <Route exact path="/manage/users" element={<ManageUsers/>} />
                 <Route exact path="/user" element={<UpdateUser />} />

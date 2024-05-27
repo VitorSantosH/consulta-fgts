@@ -3,9 +3,11 @@ const config = {
     baseURL: "https://apifgts.com.br/"
 
 }
-// "http://localhost:8011/",
-// "https://apifgts.com.br/"
-// "https://consultasaque.com.br/"
-
+//    baseURL: "http://localhost:8080/",
+// "https://vitorwebdev.com.br/"
+/**
+ * "https://consultasaque.com.br/" 
+ * "http://localhost:8009/"
+ */
 
 export default config;

@@ -11,9 +11,10 @@ const Historico = () => {
     const [state, setState] = useState({
         loaded: false,
         historyData: undefined,
-        historyComponent: undefined
+        historyComponent: undefined,
+        showData: [],
     })
-
+    let keyProp = 0
     //  const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,12 +28,14 @@ const Historico = () => {
         }
 
 
-    }, [state.loaded, state.historyData])
+    }, [state.loaded, state.historyData, state.showData])
 
 
     async function getHistory() {
 
         const response = await connect.getHistory({ token: user.token, userId: id })
+
+        console.log(response.data)
 
         return setState({
             ...state,
@@ -44,15 +47,30 @@ const Historico = () => {
 
     function constructHistory() {
 
+        const showData = []
+
         const historyComponent = [] = state.historyData.map((history, i) => {
 
+            let permitido = 0, naoPermitido = 0;
+            let dataSolicitacao = undefined;
+            showData[i] = false;
+
             const results = [] = history.data.map((data, i) => {
+
+                keyProp = (keyProp + 1 + i)
+
+                data.permitido == "SIM" ? permitido++ : naoPermitido++
+                data.data_solicitacao ? dataSolicitacao = data.data_solicitacao : ''
                 return (
-                    <div className="data">
+                    <div
+                        className="data"
+                        key={keyProp}
+                    >
 
                         <span
                             className={data.permitido !== "SIM" ? "notApr" : "apr"}
                         >
+
                             {`Permitido: ${data.permitido}`}
                         </span>
 
@@ -72,8 +90,17 @@ const Historico = () => {
                 )
             })
 
+            keyProp = (keyProp + 1 + i)
+
             return (
-                <div className="historyComponent">
+                <div
+                    className={state.showData[i] ? "openDetail historyComponent" : "historyComponent"}
+                    key={keyProp}
+                >
+                    <span>
+                        Data da consulta: {dataSolicitacao || "Não informado"}
+                    </span>
+
                     <span>
                         {`cpf: ${history.cpf}`}
                     </span>
@@ -82,12 +109,51 @@ const Historico = () => {
                         {`Autor: ${history.autorEmail}`}
                     </span>
 
-                    <div className="historiDatas">
-                        {results}
-                    </div>
+                    <span
+                        className="apr"
+
+                    >
+                        Permitido: {permitido}
+                    </span>
+
+                    <span
+                        className="notApr"
+
+                    >
+                        Não permitido: {naoPermitido}
+                    </span>
+
+
+                    <span
+                        style={{ 'cursor': 'pointer' }}
+                        onClick={e => {
+
+                            const newArr = state.showData
+                            newArr[i] = !state.showData[i]
+
+                            setState({
+                                ...state,
+                                showData: newArr
+                            })
+
+                            return constructHistory()
+                        }}
+                    >
+                        Detalhes <i className="fa fa-search"></i>
+                    </span>
+
+                    {state.showData[i] && (
+                        <div className="historiDatas">
+                            {results}
+                        </div>
+                    )}
+
+
                 </div>
             )
         })
+
+
 
         return setState({
             ...state,
@@ -102,8 +168,10 @@ const Historico = () => {
             <Menu />
 
             <h2>Historico</h2>
-            
-            {state.historyComponent}
+
+            <div className="container">
+                {state.historyComponent}
+            </div>
 
         </div>
     )

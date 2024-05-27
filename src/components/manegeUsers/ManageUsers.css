@@ -36,7 +36,7 @@
     min-width: 250px;
     max-width: 400px;
     box-sizing: border-box;
-    margin: 1rem;
+    margin: 10px;
     padding: 1rem;
     transition: all 400ms;
     line-height: 1.5rem;
@@ -48,8 +48,8 @@
     width: 100%;
     height: auto;
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
+    justify-content: center;
 }
 
 .deleteBtnContainer {
@@ -75,5 +75,9 @@
 @media only screen and (max-width: 850px) {
     .userTail {
         width: 90vw;
+    }
+
+    .manageTailsContainer {
+        justify-content: center;
     }
 }

@@ -105,6 +105,16 @@ const Login = () => {
                                         passwordValue: e.target.value
                                     })
                                 }}
+                                onKeyDown={e => {
+                                    if (e.key === "Enter") {
+
+                                        setState({
+                                            ...state,
+                                            loading: true
+                                        })
+                                        return login();
+                                    }
+                                }}
                             />
                         </i>
                     </div>

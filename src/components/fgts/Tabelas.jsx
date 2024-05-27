@@ -24,20 +24,20 @@ const Tabelas = (props) => {
     ]
 
     for (let index = 0; index < tables.length; index++) {
-        
+
         const foundItem = user.tables.find(function (item) {
             return item.name === tables[index].name
         })
 
-        if(foundItem) {
+        if (foundItem) {
             tables[index].cheked = true
-        } else  {
+        } else {
             tables[index].cheked = false
         }
 
     }
 
-   
+
 
     const [state, setState] = useState({
         loading: false,
@@ -52,7 +52,6 @@ const Tabelas = (props) => {
 
     if (props.cpfValue != state.cpfValue) {
 
-        console.log(state)
 
         return setState({
             ...state,
@@ -79,6 +78,20 @@ const Tabelas = (props) => {
             }
         })
 
+        /**
+         *                     
+                            if (novoDataFgts[`valor_${index}`] < 10.00 && novoDataFgts[`valor_${index - 1}`] > 10.00) {
+
+                                for (let i = index; i < 11; i++) {
+                                    novoDataFgts[`valor_${i}`] = 0.0;
+                                    console.log(index)
+                                    console.log(state.parcelas.length)
+                                    console.log(i)
+                                }
+
+                            }
+         */
+
         const parans = {
             cpf: state.cpfValue,
             table: tables,
@@ -87,6 +100,22 @@ const Tabelas = (props) => {
         }
 
         for (let index = 1; index < 12; index++) {
+
+
+            const novoDataFgts = state.retornoFgts;
+
+            if (novoDataFgts[`valor_${index}`] < 10.00 && novoDataFgts[`valor_${index - 1}`] > 10.00) {
+
+                for (let i = index; i < 11; i++) {
+
+                    novoDataFgts[`valor_${i}`] = 0.0;
+                    console.log(index)
+                    console.log(state)
+                    console.log(i)
+
+                }
+
+            }
 
             if (state.retornoFgts[`dataRepasse_${index}`]) {
                 let component = {
@@ -101,7 +130,7 @@ const Tabelas = (props) => {
 
         const response = await connect.getFtgsTable(parans)
         const newUser = {
-            ...user, 
+            ...user,
             ...response.payload
         }
         sessionStorage.setItem('user', JSON.stringify(newUser))
