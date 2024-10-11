@@ -5,23 +5,43 @@ import Swal from "sweetalert2";
 const Tabelas = (props) => {
 
     const user = JSON.parse(sessionStorage.getItem('user'))
+    /*   const tables = [
+           { name: 'GOLD SMART SELECT', value: 53708, checked: true },
+           { name: 'GOLD SMART TURBO', value: 53279, checked: true },
+           { name: 'GOLD SMART VIP', value: 53260, checked: true },
+           { name: 'GOLD SMART FLEX', value: 53252, checked: true },
+           { name: 'GOLD +', value: 53287, checked: true },
+           { name: 'GOLD POWER', value: 53678, checked: true },
+           { name: 'GOLD PRIME', value: 53694, checked: true },
+           { name: 'GOLD RN', value: 53236, checked: true },
+           { name: 'SMART LIGHT', value: 53244, checked: true },
+           { name: 'GOLD SPEED', value: 53686, checked: true },
+           { name: 'FGTS LIGHT', value: 50407, checked: true },
+           { name: 'FGTS PLUS', value: 53210, checked: true },
+           { name: 'FGTS PLUS +', value: 53201, checked: true },
+           { name: 'FGTS SMART FLEX', value: 53252, checked: true },
+           { name: 'FGTS TOP', value: 53228, checked: true }
+       ]
+   */
     const tables = [
-        { name: 'GOLD SMART SELECT', value: 53708, checked: true },
-        { name: 'GOLD SMART TURBO', value: 53279, checked: true },
-        { name: 'GOLD SMART VIP', value: 53260, checked: true },
-        { name: 'GOLD SMART FLEX', value: 53252, checked: true },
-        { name: 'GOLD +', value: 53287, checked: true },
-        { name: 'GOLD POWER', value: 53678, checked: true },
-        { name: 'GOLD PRIME', value: 53694, checked: true },
-        { name: 'GOLD RN', value: 53236, checked: true },
-        { name: 'SMART LIGHT', value: 53244, checked: true },
-        { name: 'GOLD SPEED', value: 53686, checked: true },
-        { name: 'FGTS LIGHT', value: 50407, checked: true },
-        { name: 'FGTS PLUS', value: 53210, checked: true },
-        { name: 'FGTS PLUS +', value: 53201, checked: true },
-        { name: 'FGTS SMART FLEX', value: 53252, checked: true },
-        { name: 'FGTS TOP', value: 53228, checked: true }
-    ]
+        { name: 'FACTA FGTS PLUS', value: 53210, checked: true },
+        { name: 'FACTA FGTS PLUS +', value: 53201, checked: true },
+        { name: 'FACTA FGTS TOP', value: 53228, checked: true },
+        { name: 'FACTA FGTS GOLD +', value: 53287, checked: true },
+        { name: 'FACTA FGTS GOLD RN', value: 53236, checked: true },
+        { name: 'FACTA FGTS GOLD SPEED', value: 53686, checked: true },
+        { name: 'FACTA FGTS GOLD PRIME', value: 53694, checked: true },
+        { name: 'FACTA FGTS GOLD SMART LIGHT', value: 53244, checked: true },
+        { name: 'FACTA FGTS GOLD SMART FLEX', value: 53252, checked: true },
+        { name: 'FACTA FGTS GOLD SMART VIP', value: 53260, checked: true },
+        { name: 'FACTA FGTS GOLD SMART TURBO', value: 53279, checked: true },
+        { name: 'FACTA FGTS GOLD SMART SELECT', value: 53708, checked: true },
+        { name: 'FACTA FGTS GOLD MONEY', value: 54216, checked: true },
+        { name: 'FACTA FGTS GOLD POWER', value: 56073, checked: true },
+        { name: 'FACTA FGTS GOLD MEGA POWER', value: 56081, checked: true },
+        { name: 'FACTA FGTS GOLD ULTRA POWER', value: 56090, checked: true },
+        { name: 'FACTA FGTS LIGHT', value: 50407, checked: true }
+    ];
 
     for (let index = 0; index < tables.length; index++) {
 
