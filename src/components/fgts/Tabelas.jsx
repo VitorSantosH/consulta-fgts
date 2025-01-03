@@ -22,7 +22,7 @@ const Tabelas = (props) => {
            { name: 'FGTS SMART FLEX', value: 53252, checked: true },
            { name: 'FGTS TOP', value: 53228, checked: true }
        ]
-   */
+   
     const tables = [
         { name: 'FACTA FGTS PLUS', value: 53210, checked: true },
         { name: 'FACTA FGTS PLUS +', value: 53201, checked: true },
@@ -42,7 +42,15 @@ const Tabelas = (props) => {
         { name: 'FACTA FGTS GOLD ULTRA POWER', value: 56090, checked: true },
         { name: 'FACTA FGTS LIGHT', value: 50407, checked: true }
     ];
+    */
 
+    const tables = [
+        { name: 'GOLD TOP RB', value: 57878, checked: true },
+        { name: 'GOLD POWER RB', value: 57894, checked: true },
+        { name: 'GOLD SPEED RB', value: 57924, checked: true },
+    ];
+
+    
     for (let index = 0; index < tables.length; index++) {
 
         const foundItem = user.tables.find(function (item) {
